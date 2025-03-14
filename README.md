@@ -20,7 +20,7 @@ Group preferences are diverse and follow a distribution rather than being unifor
 | **Test**  | 2,406  | 10,114 |
 
 # Training Process
-Our experiments follow the implementation of [DPO](https://github.com/eric-mitchell/direct-preference-optimization). The training has two steps: 1. supervised finetuning (sft); 2. preference learning by DPO or GDPO.
+Our experiments follow the implementation of [DPO](https://github.com/eric-mitchell/direct-preference-optimization). The training has two steps: 1. supervised finetuning (SFT); 2. preference learning by DPO or GDPO.
 ## 1. Set up the experiment
 ``pip install -r requirements.txt``
 ## 2. SFT Training
