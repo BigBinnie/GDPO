@@ -1,0 +1,3 @@
+sft_model_path=outputs/sft-gpt2/step-*/policy.pt
+output_dir=outputs/dpo-gpt2
+CUDA_VISIBLE_DEVICES=4,5,6,7 python -u train.py model=gpt2-large datasets=[Binwei01/mmoqa_usa] loss=dpo loss.beta=0.1 exp_name=dpo-gpt2 gradient_accumulation_steps=8 batch_size=32 eval_batch_size=32 trainer=FSDPTrainer sample_during_eval=false model.fsdp_policy_mp=bfloat16 model.archive=$sft_model_path eval_every=10000 n_epochs=20 output_dir=$output_dir

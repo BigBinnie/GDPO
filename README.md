@@ -10,6 +10,17 @@ Dataset Statistics of Controllable Opinion Generation: The number following the 
 | Eval   | 1,843                      | 22,166                     | 860                  | 10,070               | 636                  | 6,878                |
 | Test   | 1,843                      | 22,199                     | 876                  | 10,086               | 648                  | 6,890                |
 
-
 # Alignment
+Our experiments follow the implementation of [DPO](https://github.com/eric-mitchell/direct-preference-optimization).
+## 1. Set up the experiment
+``pip install -r requirements.txt``
+## 2. SFT Training
+Please set parameters of model, dataset and output_dir as necessary. You can directly use the dataset in Section 2. If you would like use your own dataset, please implement your dataset preprocessing method in ``preference_datasets.py``. 
+``bash train_scripts/run_sft.sh``
+## 3. DPO Training
+Please set parameters of model, dataset, **sft_model_path** and output_dir as necessary.
+``bash train_scripts/run_dpo.sh``
+## 4. GDPO Training
+Please set parameters of model, dataset, **sft_model_path** and output_dir as necessary.
+``bash train_scripts/run_gdpo.sh``
 # Evaluation
