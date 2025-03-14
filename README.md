@@ -1,7 +1,7 @@
 # GDPO
 This repository contains data and code for the paper: [No Preference Left Behind: Group Distributional Preference Optimization](http://arxiv.org/abs/2412.20299). This paper is accepted by ICLR 2025. If you have any questions, please reach out to the authors at binwei.yao@wisc.edu.
 # Overview
-Preferences within a group of people are not uniform but follow a distribution. While existing alignment methods like Direct Preference Optimization (DPO) attempt to steer models to reflect human preferences, they struggle to capture the distributional pluralistic preferences within a group. These methods often skew toward dominant preferences, overlooking the diversity of opinions, especially when conflicting preferences arise. To address this issue, we propose Group Distribution Preference Optimization (GDPO), a novel framework that aligns language models with the distribution of preferences within a group by incorporating the concept of beliefs that shape individual preferences. GDPO calibrates a language model using statistical estimation of the group's belief distribution and aligns the model with belief-conditioned preferences, offering a more inclusive alignment framework than traditional methods. In experiments using both synthetic controllable opinion generation and real-world movie review datasets, we show that DPO fails to align with the targeted belief distributions, while GDPO consistently reduces this alignment gap during training. Moreover, our evaluation metrics demonstrate that GDPO outperforms existing approaches in aligning with group distributional preferences, marking a significant advance in pluralistic alignment. 
+Group preferences are diverse and follow a distribution rather than being uniform. Existing alignment methods like Direct Preference Optimization (DPO) struggle to capture this diversity, often favoring dominant preferences and overlooking conflicting ones. To address this, the authors propose Group Distributional Preference Optimization (GDPO), a novel framework that aligns language models with the distribution of preferences within a group by incorporating beliefs that shape individual preferences. GDPO estimates the group's belief distribution and aligns the model accordingly, ensuring a more inclusive approach. Experiments on synthetic and real-world datasets show that DPO fails to match targeted belief distributions, while GDPO significantly reduces this gap and outperforms existing methods in pluralistic alignment.
 # Data Synthesis
 Dataset Statistics of Controllable Opinion Generation: The number following the country name is the sum of questions in GlobalOpinionQA used to generate dialogues.
 | Split  | [United States (469) Small](https://huggingface.co/datasets/Binwei01/mmoqa_usa) | [United States (469) Large](https://huggingface.co/datasets/Binwei01/mmoqa_usa_large) | [Pakistan (219) Small](https://huggingface.co/datasets/Binwei01/mmoqa_pk) | [Pakistan (219) Large](https://huggingface.co/datasets/Binwei01/mmoqa_pk_large) | [S. Africa (162) Small](https://huggingface.co/datasets/Binwei01/mmoqa_sa) | [S. Africa (162) Large](https://huggingface.co/datasets/Binwei01/mmoqa_sa_large) |
@@ -24,3 +24,10 @@ Please set parameters of model, dataset, **sft_model_path** and output_dir as ne
 Please set parameters of model, dataset, **sft_model_path** and output_dir as necessary.
 ``bash train_scripts/run_gdpo.sh``
 # Evaluation
+# Citation
+``@article{yao2024no,
+  title={No Preference Left Behind: Group Distributional Preference Optimization},
+  author={Yao, Binwei and Cai, Zefan and Chuang, Yun-Shiuan and Yang, Shanglin and Jiang, Ming and Yang, Diyi and Hu, Junjie},
+  journal={arXiv preprint arXiv:2412.20299},
+  year={2024}
+}``
