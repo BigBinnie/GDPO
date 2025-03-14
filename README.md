@@ -25,11 +25,11 @@ Please set parameters of model, dataset, **sft_model_path** and output_dir as ne
 ``bash train_scripts/run_gdpo.sh``
 # Evaluation
 # Citation
-``
-@article{yao2024no,
-  title={No Preference Left Behind: Group Distributional Preference Optimization},
-  author={Yao, Binwei and Cai, Zefan and Chuang, Yun-Shiuan and Yang, Shanglin and Jiang, Ming and Yang, Diyi and Hu, Junjie},
-  journal={arXiv preprint arXiv:2412.20299},
-  year={2024}
-}
-``
+If you would like to use our data or method in your paper, please cite:
+
+    @article{yao2024no,
+    title={No Preference Left Behind: Group Distributional Preference Optimization},
+    author={Yao, Binwei and Cai, Zefan and Chuang, Yun-Shiuan and Yang, Shanglin and Jiang, Ming and Yang, Diyi and Hu, Junjie},
+    journal={arXiv preprint arXiv:2412.20299},
+    year={2024}
+    }
