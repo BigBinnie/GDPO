@@ -10,7 +10,7 @@ Dataset Statistics of Controllable Opinion Generation: The number following the 
 | Eval   | 1,843                      | 22,166                     | 860                  | 10,070               | 636                  | 6,878                |
 | Test   | 1,843                      | 22,199                     | 876                  | 10,086               | 648                  | 6,890                |
 
-# Alignment
+# Training Process
 Our experiments follow the implementation of [DPO](https://github.com/eric-mitchell/direct-preference-optimization). The training has two steps: 1. supervised finetuning (sft); 2. preference learning by DPO or GDPO.
 ## 1. Set up the experiment
 ``pip install -r requirements.txt``
