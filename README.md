@@ -25,12 +25,15 @@ Our experiments follow the implementation of [DPO](https://github.com/eric-mitch
 ``pip install -r requirements.txt``
 ## 2. SFT Training
 Please set parameters of model, dataset and output_dir as necessary. You can directly use the dataset in Section 2. If you would like use your own dataset, please implement your dataset preprocessing method in ``preference_datasets.py``. 
+
 ``bash train_scripts/run_sft.sh``
 ## 3. DPO Training
 Please set parameters of model, dataset, **sft_model_path** and output_dir as necessary.
+
 ``bash train_scripts/run_dpo.sh``
 ## 4. GDPO Training
 Please set parameters of model, dataset, **sft_model_path** and output_dir as necessary.
+
 ``bash train_scripts/run_gdpo.sh``
 # Evaluation
 # Citation
