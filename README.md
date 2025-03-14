@@ -28,11 +28,11 @@ Please set parameters of model, dataset and output_dir as necessary. You can dir
 
 ``bash train_scripts/run_sft.sh``
 ## 3. DPO Training
-Please set parameters of model, dataset, **sft_model_path** and output_dir as necessary.
+Please set parameters of model, dataset, **sft_model_path** and output_dir as needed.
 
 ``bash train_scripts/run_dpo.sh``
 ## 4. GDPO Training
-Please set parameters of model, dataset, **sft_model_path** and output_dir as necessary.
+Please set parameters of model, dataset, **sft_model_path** and output_dir as needed.
 
 ``bash train_scripts/run_gdpo.sh``
 # Evaluation
