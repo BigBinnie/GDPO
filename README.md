@@ -11,7 +11,7 @@ Group preferences are diverse and follow a distribution rather than being unifor
 | Eval   | 1,843                      | 22,166                     | 860                  | 10,070               | 636                  | 6,878                |
 | Test   | 1,843                      | 22,199                     | 876                  | 10,086               | 648                  | 6,890                |
 
-2. The statistics of movie review generation data is as follows:
+2. Dataset Statistics of Controllable Review Generation: The data is from [Amazon Movie Review](https://snap.stanford.edu/data/web-Movies.html)
 
 | Split  | [Small](https://huggingface.co/datasets/Binwei01/movie_review)  | [Large](https://huggingface.co/datasets/Binwei01/movie_review_large)  |
 |--------|--------|--------|
