@@ -3,12 +3,21 @@ This repository contains data and code for the paper: [No Preference Left Behind
 # Overview
 Group preferences are diverse and follow a distribution rather than being uniform. Existing alignment methods like Direct Preference Optimization (DPO) struggle to capture this diversity, often favoring dominant preferences and overlooking conflicting ones. To address this, the authors propose Group Distributional Preference Optimization (GDPO), a novel framework that aligns language models with the distribution of preferences within a group by incorporating beliefs that shape individual preferences. GDPO estimates the group's belief distribution and aligns the model accordingly, ensuring a more inclusive approach. Experiments on synthetic and real-world datasets show that DPO fails to match targeted belief distributions, while GDPO significantly reduces this gap and outperforms existing methods in pluralistic alignment.
 # Data Synthesis
-Dataset Statistics of Controllable Opinion Generation: The number following the country name is the sum of questions in GlobalOpinionQA used to generate dialogues.
+1. Dataset Statistics of Controllable Opinion Generation: The number following the country name is the sum of questions in GlobalOpinionQA used to generate dialogues.
+
 | Split  | [United States (469) Small](https://huggingface.co/datasets/Binwei01/mmoqa_usa) | [United States (469) Large](https://huggingface.co/datasets/Binwei01/mmoqa_usa_large) | [Pakistan (219) Small](https://huggingface.co/datasets/Binwei01/mmoqa_pk) | [Pakistan (219) Large](https://huggingface.co/datasets/Binwei01/mmoqa_pk_large) | [S. Africa (162) Small](https://huggingface.co/datasets/Binwei01/mmoqa_sa) | [S. Africa (162) Large](https://huggingface.co/datasets/Binwei01/mmoqa_sa_large) |
 |--------|----------------------------|----------------------------|----------------------|----------------------|----------------------|----------------------|
 | Train  | 14,321                     | 176,905                    | 6,684                | 80,364               | 4,960                | 54,896               |
 | Eval   | 1,843                      | 22,166                     | 860                  | 10,070               | 636                  | 6,878                |
 | Test   | 1,843                      | 22,199                     | 876                  | 10,086               | 648                  | 6,890                |
+
+2. The statistics of movie review generation data is as follows:
+
+| Split  | [Small](https://huggingface.co/datasets/Binwei01/movie_review)  | [Large](https://huggingface.co/datasets/Binwei01/movie_review_large)  |
+|--------|--------|--------|
+| **Train** | 13,825 | 73,804 |
+| **Eval**  | 1,657  | 9,155  |
+| **Test**  | 2,406  | 10,114 |
 
 # Training Process
 Our experiments follow the implementation of [DPO](https://github.com/eric-mitchell/direct-preference-optimization). The training has two steps: 1. supervised finetuning (sft); 2. preference learning by DPO or GDPO.
