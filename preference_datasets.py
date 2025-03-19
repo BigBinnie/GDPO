@@ -192,14 +192,16 @@ def get_mmoqa(name: str, split: str, silent: bool = False, cache_dir: str = None
 
     return data
 
-def get_movie_reviews(split: str, silent: bool = False, cache_dir: str = None, dpo_mode: bool = False) -> Dict[str, Dict[str, Union[List[Tuple[int, int]], List[str], str]]]:
+def get_movie_reviews(dataset_name: str, split: str, silent: bool = False, cache_dir: str = None, dpo_mode: bool = False) -> Dict[str, Dict[str, Union[List[Tuple[int, int]], List[str], str]]]:
     """Load the multi-community alignment data from json.
        For this dataset, the sft_target is just the chosen response.
     """
-    print(f'Loading multi-community alignment dataset ({split} split) from json..., dpo_mode: {dpo_mode}')
-    with open(f'data/movie_review_small/mma_{split}.json') as f:
-        dataset = json.load(f)
-
+    # print(f'Loading multi-community alignment dataset ({split} split) from json..., dpo_mode: {dpo_mode}')
+    # with open(f'data/movie_review_small/mma_{split}.json') as f:
+    #     dataset = json.load(f)
+    print(f'Loading multi-community alignment dataset ({split} split) from Huggingface..., dpo_mode: {dpo_mode}')    
+    dataset = datasets.load_dataset(f'{dataset_name}', split=split, cache_dir=cache_dir)
+    print('done')
     def split_prompt_and_responses(ex):
         # print("ex:", ex)
         prompt = f"<Q>{ex['prompt']}<A>"
@@ -227,7 +229,7 @@ def get_movie_reviews(split: str, silent: bool = False, cache_dir: str = None, d
     print("len(data):", len(data))
     return data
 
-def get_mmoqa_large(dataset_name, split: str, silent: bool = False, cache_dir: str = None, dpo_mode: bool = False) -> Dict[str, Dict[str, Union[List[Tuple[int, int]], List[str], str]]]:
+def get_mmoqa(dataset_name, split: str, silent: bool = False, cache_dir: str = None, dpo_mode: bool = False) -> Dict[str, Dict[str, Union[List[Tuple[int, int]], List[str], str]]]:
     """Load the multi-community alignment data from json.
        For this dataset, the sft_target is just the chosen response.
     """
@@ -274,8 +276,8 @@ def get_dataset(name: str, split: str, silent: bool = False, cache_dir: str = No
     elif name == 'se':
         data = get_se(split, silent=silent, cache_dir=cache_dir)
     elif 'mmoqa' in name:
-        data = get_mmoqa_large(name, split, silent=silent, cache_dir=cache_dir, dpo_mode=dpo_mode)
-    elif name == 'movie_reviews':
+        data = get_mmoqa(name, split, silent=silent, cache_dir=cache_dir, dpo_mode=dpo_mode)
+    elif 'movie_reviews' in name:
         data = get_movie_reviews(name, split, silent=silent, cache_dir=cache_dir, dpo_mode=dpo_mode)
     else:
         raise ValueError(f"Unknown dataset: {name}")
