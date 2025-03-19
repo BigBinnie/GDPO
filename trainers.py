@@ -845,7 +845,7 @@ class BasicTrainer(object):
 
             CE_losses, JS_divergence, cls_sum = _CE_loss(batch, policy_chosen_logits, self.tokenizer)
             policy_logps_belief = _get_batch_logps_belief(batch, policy_chosen_logits, batch['target_labels'], self.tokenizer, average_log_prob=True)
-            batch = exclude_belief_from_batch(batch, self.tokenizer)
+            # batch = exclude_belief_from_batch(batch, self.tokenizer)
             policy_chosen_logps, policy_rejected_logps, policy_KL_logps = self.kto_forward(self.policy, batch)
             
             with torch.no_grad():

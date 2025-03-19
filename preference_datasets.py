@@ -226,35 +226,6 @@ def get_movie_reviews(split: str, silent: bool = False, cache_dir: str = None, d
     
     print("len(data):", len(data))
     return data
-    """Load the multi-community alignment data from huggingface.
-       For this dataset, the sft_target is just the chosen response.
-    """
-    print(f'Loading multi-community alignment dataset ({split} split) from json..., dpo_mode: {dpo_mode}')
-    with open(f'data/opinion_number_prob_fewshot_shuffle/mma_{split}.json') as f:
-        dataset = json.load(f)
-
-    def split_prompt_and_responses(ex):
-        # print("ex:", ex)
-        prompt = f"{ex['context']}<Q>{ex['prompt']}<A>"
-        chosen_response = f"{ex['accept_choice_id']}<{ex['accept_choice']}>{ex['accept_response']}"
-        if dpo_mode:
-            rejected_response = f"{ex['reject_choice_id']}<{ex['reject_choice']}>{ex['reject_response']}"
-        else:
-            rejected_response = f"{ex['accept_choice_id']}<{ex['accept_choice']}>{ex['reject_response']}"
-        probs = ex["probabilities"]
-        return prompt, chosen_response, rejected_response, probs
-
-    data = defaultdict(lambda: defaultdict(list))
-    for row in tqdm.tqdm(dataset, desc='Processing MMA', disable=silent):
-        prompt, chosen, rejected, probs = split_prompt_and_responses(row)
-        responses = [chosen, rejected]
-        n_responses = len(data[prompt]['responses'])
-        data[prompt]['pairs'].append((n_responses, n_responses + 1))
-        data[prompt]['responses'].extend(responses)
-        data[prompt]['sft_target'] = chosen
-        data[prompt]['probabilities'] = probs
-
-    return data
 
 def get_mmoqa_large(dataset_name, split: str, silent: bool = False, cache_dir: str = None, dpo_mode: bool = False) -> Dict[str, Dict[str, Union[List[Tuple[int, int]], List[str], str]]]:
     """Load the multi-community alignment data from json.
@@ -302,8 +273,8 @@ def get_dataset(name: str, split: str, silent: bool = False, cache_dir: str = No
         data = get_hh(split, silent=silent, cache_dir=cache_dir)
     elif name == 'se':
         data = get_se(split, silent=silent, cache_dir=cache_dir)
-    elif name == 'mmoqa':
-        data = get_mmoqa(name, split, silent=silent, cache_dir=cache_dir, dpo_mode=dpo_mode)
+    elif 'mmoqa' in name:
+        data = get_mmoqa_large(name, split, silent=silent, cache_dir=cache_dir, dpo_mode=dpo_mode)
     elif name == 'movie_reviews':
         data = get_movie_reviews(name, split, silent=silent, cache_dir=cache_dir, dpo_mode=dpo_mode)
     else:
