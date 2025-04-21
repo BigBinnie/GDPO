@@ -37,6 +37,7 @@ Please set parameters of model, dataset, **sft_model_path** and output_dir as ne
 ``bash train_scripts/run_gdpo.sh``
 # Evaluation
 Please set parameters of model, dataset, and output_dir as needed.
+
 ``bash inference_scripts/run_inference.sh``
 # Citation
 If you would like to use our data or method in your paper, please cite:
