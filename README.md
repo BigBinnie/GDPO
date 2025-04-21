@@ -44,6 +44,11 @@ Get evaluation results
 
 ``bash evaluation_scripts/run_evaluate.sh``
 
+Specifically, for the evaluation of Belief-Preference Consistency, we use gpt-4o for the evaluation, you should set your own API keys for the API calls. For the evaluation, please run
+
+``bash evaluation_scripts/run_evaluate_BPC.sh``
+
+
 # Citation
 If you would like to use our data or method in your paper, please cite:
 
