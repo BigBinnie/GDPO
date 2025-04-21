@@ -233,14 +233,9 @@ def get_mmoqa(dataset_name, split: str, silent: bool = False, cache_dir: str = N
     """Load the multi-community alignment data from json.
        For this dataset, the sft_target is just the chosen response.
     """
-    if split not in ['train', 'eval', 'test']:
-        print(f'Loading multi-community alignment dataset ({split} split) from json..., dpo_mode: {dpo_mode}')
-        with open(f'data/opinion_number_prob_analysis/mma_{split}.json') as f:
-            dataset = json.load(f)
-    else:
-        print(f'Loading multi-community alignment dataset ({split} split) from Huggingface..., dpo_mode: {dpo_mode}')    
-        dataset = datasets.load_dataset(f'{dataset_name}', split=split, cache_dir=cache_dir)
-        print('done')
+    print(f'Loading multi-community alignment dataset ({split} split) from Huggingface..., dpo_mode: {dpo_mode}')    
+    dataset = datasets.load_dataset(f'{dataset_name}', split=split, cache_dir=cache_dir)
+    print('done')
 
     def split_prompt_and_responses(ex):
         if "context" in ex:

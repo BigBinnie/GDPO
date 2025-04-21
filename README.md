@@ -39,6 +39,11 @@ Please set parameters of model, dataset, **sft_model_path** and output_dir as ne
 Please set parameters of model, dataset, and output_dir as needed.
 
 ``bash inference_scripts/run_inference.sh``
+
+Get evaluation results
+
+``bash evaluation_scripts/run_evaluate.sh``
+
 # Citation
 If you would like to use our data or method in your paper, please cite:
 
