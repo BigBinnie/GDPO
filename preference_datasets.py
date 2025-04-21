@@ -161,7 +161,7 @@ def get_hh(split: str, silent: bool = False, cache_dir: str = None) -> Dict[str,
 
     return data
 
-def get_mmoqa(name: str, split: str, silent: bool = False, cache_dir: str = None, dpo_mode: bool = False) -> Dict[str, Dict[str, Union[List[Tuple[int, int]], List[str], str]]]:
+def get_mmlqa(name: str, split: str, silent: bool = False, cache_dir: str = None, dpo_mode: bool = False) -> Dict[str, Dict[str, Union[List[Tuple[int, int]], List[str], str]]]:
     """Load the multi-community alignment data from json.
        For this dataset, the sft_target is just the chosen response.
     """
